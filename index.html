@@ -8,24 +8,49 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
 <body>
-    <div class="class-container" style="margin-left: auto;margin-right: auto;text-align: center;">
-        <div class="row mt-5" >
+    <div class="container-fluid" >
+        <div class="row" >
             <div class="col-4"></div>
-            <div class="col-4">
+            <div class="col-4 mt-5" style="text-align: center;margin-left: auto;margin-right: auto;">
                 <input type="text" name="" id="country" placeholder="enter country name">
                 <button class="btn btn-primary" onclick="fetchCountry()">Search</button>
             </div>
             <div class="col-4"></div>
         </div>
-        <div class="row mt-5" >
-            <div class="col-4"></div>
-            <div class="col-4"  id="result">
-
-            </div>
-            <div class="col-4"></div>
+        
+    </div>
+    <div class="row" style="margin-top: 70px;width: 100%;display: flex;justify-content: space-evenly;">
+        <div class="col-lg-3 col-md-4" >
+            
+            
+            
+            <p  id="one"></p> 
+        </div>
+        <div class="col-lg-3 col-md-4" >
+            <label for="">Name:</label>
+            
+           <b><h5><p id="two"></p></h5></b> <br>
+           <label for="">Population:</label>
+            
+           <b><h5><p id="three"></p></h5></b> <br>
+           <label for="">Currency:</label>
+            
+           <b><h5><p id="four"></p></h5></b> <br>
+           <label for="">Symbol:</label>
+            
+           <b><h5><p id="five"></p></h5></b> <br>
+           <label for="">Capital:</label>
+            
+           <b><h5><p id="six"></p></h5></b> <br>
+           <label for="">Region:</label>
+            
+           <b><h5><p id="seven"></p></h5></b> <br>
 
         </div>
+        
+        </div>
     </div>
+
 
 </body>
 <script>
@@ -37,41 +62,25 @@
         let symbol=country[0].currencies[0].symbol
         let capital=country[0].capital
         let region=country[0].region
-        console.log(name,population,flag,cu_name,symbol,region,capital)
+        console.log(name,flag,population,cu_name,symbol,capital,region)
+            
+
+
         let html_data=`<div class="card" style="width: 16rem;">
-  <img src="${flag}" class="card-img-top" alt="...">
-  <div class="card-body">
-    <h5 class="card-title">Name:${name}</h5>
-    <p class="card-text">Population:${population}</p>
-    <p class="card-text">Currency name:${cu_name}</p>
-    <p class="card-text">Symbol:${symbol}</p>
-    <p class="card-text">Region:${region}</p>
-    <p class="card-text">Capital:${capital}</p>
-  </div>
-</div>`
-    result.innerHTML=html_data
+    <img src="${flag}" class="card-img-top" alt="..." style="mt-5">
+  
+    </div>`
+    document.querySelector("#one").innerHTML=html_data
+    document.querySelector("#two").innerHTML=name
+    document.querySelector("#three").innerHTML=population
+    document.querySelector("#four").innerHTML=cu_name
+    document.querySelector("#five").innerHTML=symbol
+    document.querySelector("#six").innerHTML=capital
+    document.querySelector("#seven").innerHTML=region
     }
 
 
-    // function fetchCountry(){
-    //     let country_name=country.value
-    //     let url=`https://restcountries.eu/rest/v2/name/${country_name}?fullText=true`
-
-    //     let request=new XMLHttpRequest()
-    //     request.open("get",url)
-    //     request.send()
-
-    //     request.onreadystatechange=()=>{
-    //         if(request.readyState==4){
-    //             if(request.status>199 & request.status<300){
-    //                 let data=JSON.parse(request.responseText)
-    //                 console.log(data);
-    //                 displayValues(data)
-    //             }
-    //         }
-    //     }
-
-    // }
+    
 
 
     function fetchCountry(){
